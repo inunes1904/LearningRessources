@@ -1,1 +1,0 @@
-# Learning Ressources Small Project
