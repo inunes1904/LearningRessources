@@ -1,6 +1,15 @@
 
 import ButtonLearnRessource from '../UI/ButtonLearnRessource.vue';
 <template>
+<base-dialog v-if="inputIsInvalid" title="Invalid Input" @closeDialog="confirmError">
+<template #default>
+    <p>Unfortunately, at least one input value is invalid.</p>
+    <p>Please review the inputs.</p>
+</template>
+<template #actions>
+    <button-learn-ressource @click="confirmError">OK</button-learn-ressource>
+</template>
+</base-dialog>
 <base-card>
 <form @submit.prevent="submitData">
     <div class="form-control"> 
@@ -26,14 +35,32 @@ import ButtonLearnRessource from '../UI/ButtonLearnRessource.vue';
 
 export default{
     emits:['add-new-ressource'],
+    data(){
+        return{
+            inputIsInvalid: false,
+        };
+    },
     methods:{
         submitData(){
-            const title = this.$refs.titleInput.value;
-            const description = this.$refs.descInput.value;
-            const link = this.$refs.linkInput.value;
+            const enteredTitle = this.$refs.titleInput.value;
+            const enteredDescription = this.$refs.descInput.value;
+            const enteredLink = this.$refs.linkInput.value;
             
-            this.addRessource(title, description, link);
-        }
+            console.log("asdas");
+            console.log(enteredTitle, enteredDescription, enteredLink); 
+
+            if (enteredTitle.trim() === '' || enteredDescription.trim()  === '' 
+            || enteredLink.trim()  === '0'){
+                console.log("AQUIIIIIII")
+                this.inputIsInvalid = true;
+                return;
+            }
+
+            this.addRessource(enteredTitle, enteredDescription, enteredLink);
+        },
+        confirmError(){
+            this.inputIsInvalid = false;
+        },
     }, 
     inject:['addRessource']
 }

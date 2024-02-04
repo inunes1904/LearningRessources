@@ -3,7 +3,7 @@
       <base-card>
         <header>
             <h3>{{ title }}</h3>
-            <button-learn-ressource mode="flat" @click="toogleDeleteLearningRessource">Delete</button-learn-ressource>
+            <button-learn-ressource mode="flat" @click="deleteRessource(this.id)">Delete</button-learn-ressource>
         </header>
         <p>{{ description }}</p>
         <nav>
@@ -17,8 +17,7 @@
 
 
 export default{
-
-    emits:['delete-learning-ressource'],
+    inject:['deleteRessource'],
     props:{
         id: String,
         title: String,
@@ -28,10 +27,7 @@ export default{
     data(){
         return{};
     },
-    toogleDeleteLearningRessource(){
-        console.log("AQUIIIII")
-        this.$emit('delete-learning-ressource', this.id);
-    }
+
 }
 </script>
 

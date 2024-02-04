@@ -44,7 +44,8 @@ export default{
     },
     provide(){
         return {ressources: this.storedRessources,
-                addRessource: this.addNewRessource};
+                addRessource: this.addNewRessource, 
+                deleteRessource: this.deleteLearningRessource};
     },
     computed:{
         storedResButtonMode(){
@@ -59,6 +60,7 @@ export default{
             this.selectedTab = tab;
         },
         addNewRessource(title, description, link){
+
             const newLearningRessource = {
                 id: new Date().toISOString(),
                 title:title,
@@ -66,7 +68,13 @@ export default{
                 link:link
             };
             this.storedRessources.unshift(newLearningRessource);
+            this.setSelectedTab('stored-ressources');
         },
+        deleteLearningRessource(id){
+            console.log("AQUIIIII");
+            const ressourceIdx = this.storedRessources.findIndex(ressource => ressource.id === id);
+            this.storedRessources.splice(ressourceIdx, 1);
+        }
     }
 }
 </script>
