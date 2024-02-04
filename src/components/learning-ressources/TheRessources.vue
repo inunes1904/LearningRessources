@@ -43,7 +43,8 @@ export default{
         };
     },
     provide(){
-        return {ressources: this.storedRessources}
+        return {ressources: this.storedRessources,
+                addRessource: this.addNewRessource};
     },
     computed:{
         storedResButtonMode(){
@@ -56,7 +57,16 @@ export default{
     methods:{
         setSelectedTab(tab){
             this.selectedTab = tab;
-        }
+        },
+        addNewRessource(title, description, link){
+            const newLearningRessource = {
+                id: new Date().toISOString(),
+                title:title,
+                description:description,
+                link:link
+            };
+            this.storedRessources.unshift(newLearningRessource);
+        },
     }
 }
 </script>
