@@ -1,20 +1,23 @@
 <template>
     <li>
-        <div>
-            <header>
-                <h3>{{ title }}</h3>
-                <button @click="toogleDeleteLearningRessource">Delete</button>
-            </header>
-        </div>
+      <base-card>
+        <header>
+            <h3>{{ title }}</h3>
+            <button-learn-ressource mode="flat" @click="toogleDeleteLearningRessource">Delete</button-learn-ressource>
+        </header>
         <p>{{ description }}</p>
         <nav>
             <a :href="link">View Ressource</a>
         </nav>
-    </li>
+      </base-card>
+  </li>
 </template>
 
 <script>
+
+
 export default{
+
     emits:['delete-learning-ressource'],
     props:{
         id: String,

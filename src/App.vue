@@ -1,39 +1,25 @@
 <template>
-   <stored-ressources :ressources="storedRessources"></stored-ressources>
+   <the-header :title="appTitle"></the-header>
+   <the-ressources></the-ressources>
 </template>
 
 <script>
 
-import StoredRessources from './components/learning-ressources/StoredRessources.vue';
+import TheHeader from './components/layouts/TheHeader.vue';
+import TheRessources from './components/learning-ressources/TheRessources.vue';
+
 
 export default{
     
     components:{
-        StoredRessources,
+     
+        TheHeader,
+        TheRessources,
     },
 
     data(){
-        return{ 
-            storedRessources:[
-                {
-                    id:'official-guide',
-                    title:'Official Guide',
-                    description:'The Official Guide to Vue.js',
-                    link:'https://vuejs.org/v2/guide/'
-                },
-                {
-                    id:'google',
-                    title:'Google',
-                    description:'Google Search Engine',
-                    link:'https://www.google.com'
-                },
-                {
-                    id:'youtube',
-                    title:'Youtube',
-                    description:'Youtube Video Sharing',
-                    link:'https://www.youtube.com'
-                }
-            ]
+        return{ appTitle: 'Learning Ressources',
+            
     };
     },
     methods:{

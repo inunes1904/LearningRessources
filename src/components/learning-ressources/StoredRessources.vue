@@ -17,7 +17,7 @@ export default{
     },
 
     emits:['delete-learning-ressource'],
-    props:['ressources'],
+    inject:['ressources'],
     data(){
         return{};
     },
